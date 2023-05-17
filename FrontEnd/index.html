@@ -34,32 +34,11 @@
 			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
 	</section>
-	<script>
-		fetch('http://localhost:5678/api/works')
-		  .then(response => response.json())
-		  .then(data => {
-			const catalogueContainer = document.getElementById('catalogue');
-			
-			data.forEach(item => {
-			  const itemContainer = document.createElement('div');
-			  itemContainer.className = 'item';
-	
-			  const image = document.createElement('img');
-			  image.src = imageURL;
-			  image.alt = item.title;
-			  itemContainer.appendChild(image);
-	
-			  const text = document.createElement('p');
-			  text.textContent = item.description;
-			  itemContainer.appendChild(text);
-	
-			  catalogueContainer.appendChild(itemContainer);
-			});
-		  })
-		  .catch(error => {
-			console.error('Erreur lors de la récupération des données de l\'API:', error);
-		  });
-		  </script>
+	<section id="portfolio">
+		<h2>Mes Projets</h2>
+		<ul class="projects"></ul>
+		<div class="gallery"></div>
+	</section>
 	<section id="contact">
 		<h2>Contact</h2>
 		<p>Vous avez un projet ? Discutons-en !</p>
@@ -82,6 +61,6 @@
 		</ul>
 	</nav>
 </footer>
-<script src="./assets/script.js"></script>
+<script src="assets/script.js"></script>
 </body>
 </html>

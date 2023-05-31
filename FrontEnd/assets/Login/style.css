@@ -56,7 +56,7 @@ body {
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px 0px 150px 0px
 }
 section {
 	margin: 50px 0
@@ -82,7 +82,9 @@ h2{
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
-	color: #1D6154
+	color: #1D6154;
+	text-align: center;
+	margin: 0px 0PX 32px 0px;
 }
 nav ul {
 	display: flex;
@@ -147,6 +149,10 @@ main li {border: 1px solid #1D6154;
 
 .active {background: #1D6154;
 		color: #FFFFFF;
+}
+
+a {text-decoration: none;
+	color: inherit;
 }
 
 .gallery {
@@ -217,8 +223,6 @@ footer nav ul {
     align-self: center;
 }
 
-.cadretxt {}
-
 .cadre {background: #FFFFFF;
     box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
     width: 379px;
@@ -237,4 +241,24 @@ footer nav ul {
     font-size: 14px;
     line-height: 17px;
     color: #FFFFFF;
+	align-self: center;
 }
+
+
+
+.fomulaire {display: flex;
+justify-content: center;}
+
+.cadrepad {margin: 7px 0px 30px 0px;}
+
+.mdp {font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+	text-decoration-line: underline;
+	text-align: center;
+	color: #3D3D3D;
+	margin-top: 28px;
+}
+	

@@ -8,29 +8,34 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="assets/Login/style.css">
 </head>
 <body>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
 		<ul>
-			<li>projets</li>
-			<li>contact</li>
-			<li>login</li>
-			<li><img src="../assets/icons/instagram.png" alt="Instagram"></li>
+			<a href="index.html#portfolio"><li>projets</li></a>
+			<a href="index.html#contact"><li>contact</li></a>
+			<a href="#"><li>login</li></a>
+			<li><img src="assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
 </header>
     <main>
-        <form>  
+		<h2>Log In</h2>
+        <form class="fomulaire">  
             <div class="container">   
                 <label class="cadretxt">Email : </label>   
-                <input class="cadre" type="text" placeholder="" name="username" required>  
+                <input class="cadre cadrepad" type="text" id="text" placeholder="" name="username" required>  
                 <label class="cadretxt">Mot de passe : </label>   
-                <input class="cadre" type="password" placeholder="" name="password" required>  
+                <input class="cadre cadrepad" type="password" id="password" placeholder="" name="password" required>  
                 <button class="button" type="submit">Se connecter</button>   
-                <a class="cadretxt" href="#"> Mot de passe oublié </a>   
+                
             </div>   
-        </form>     
+        </form>
+		<a href="#"><p class="mdp">Mot de passe oublié</p></a>  
     </main>
+</body>
+    <script src="assets/Login/login.js"></script>
+</html>

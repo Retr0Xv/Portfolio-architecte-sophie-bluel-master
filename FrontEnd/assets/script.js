@@ -75,3 +75,25 @@ window.addEventListener('DOMContentLoaded', async () => {
     await fetchWorks();
     await filterWorks();
 })
+
+function handleLogout() {
+    
+    localStorage.removeItem('accessToken');
+    window.location.reload();}
+
+const token = localStorage.getItem('accessToken');
+const loginButton = document.querySelector('.loginButton');
+const loginproject = document.querySelector('.loginproject')
+
+if (token) {
+  
+  loginButton.textContent ='Logout';
+  loginButton.addEventListener('click', handleLogout);
+  loginButton.removeAttribute ('href')
+  loginproject.classList.add ('nofiltermg')
+  projects.classList.add('nofilter')
+} else {
+  
+  loginButton.textContent ='Login';
+  loginButton.addEventListener('click', handleLogin);
+}

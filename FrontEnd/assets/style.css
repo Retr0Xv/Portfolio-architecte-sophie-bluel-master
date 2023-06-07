@@ -163,6 +163,21 @@ main li {border: 1px solid #1D6154;
 	width: 100%;
 
 }
+
+.gallerymod {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-column-gap: 20px;
+	grid-row-gap: 20px;
+}
+
+
+
+.gallerymod img {
+	width: 100%;
+
+}
 #contact {
 	width: 50%;
 margin: auto;
@@ -218,4 +233,42 @@ footer nav ul {
 
 a {text-decoration: none;
 	color: inherit;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left:0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+	top: 50%;
+    position: relative;
+	border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }

@@ -15,8 +15,8 @@
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
 		<ul>
-			<li>projets</li>
-			<li>contact</li>
+			<a href="index.html#portfolio"><li>projets</li></a>
+			<a href="index.html#contact"><li>contact</li></a>
 			<li><a href="login.html" class="loginButton"></a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
@@ -36,11 +36,19 @@
 	</section>
 	<section id="portfolio">
 		<h2 class="loginproject">Mes Projets</h2>
+			<button id="openModalBtn" class="modalbutton nofilter">modifier</button>
+    		<div id="myModal" class="modal">
+        	<div class="modal-content">
+            <span class="close">&times;</span>
+			<p>gallery photo</p>
+            <div class="gallerymod"></div>
+        	</div>
+    		</div>
 		<ul class="projects"></ul>
 		<div class="gallery"></div>
 	</section>
 	<section id="contact">
-		<h2">Contact</h2>
+		<h2>Contact</h2>
 		<p>Vous avez un projet ? Discutons-en !</p>
 		<form action="#" method="post">
 			<label for="name">Nom</label>

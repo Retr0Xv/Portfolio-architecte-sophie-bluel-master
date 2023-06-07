@@ -3,6 +3,7 @@ let worksFiltered = [];
 let categories = [];
 const projects = document.querySelector('.projects');
 const gallery = document.querySelector('.gallery');
+const gallerymod = document.querySelector('.gallerymod');
 
 async function fetchCategories() {
     try {
@@ -32,6 +33,7 @@ async function fetchWorks() {
         const response = await fetch('http://localhost:5678/api/works');
         works = await response.json();
         displayWorks(works);
+        displayWorksmod(works);
     } catch (error) {
         console.log(error);
     }
@@ -70,6 +72,14 @@ function displayWorks(data) {
     }).join(' ');
 }
 
+function displayWorksmod(data) {
+    gallerymod.innerHTML = data.map((work) => {
+        return `<figure>
+                <img src=${work.imageUrl} alt=${work.title}/>
+            </figure>`
+    }).join(' ');
+}
+
 window.addEventListener('DOMContentLoaded', async () => {
     await fetchCategories();
     await fetchWorks();
@@ -84,6 +94,7 @@ function handleLogout() {
 const token = localStorage.getItem('accessToken');
 const loginButton = document.querySelector('.loginButton');
 const loginproject = document.querySelector('.loginproject')
+const modalbutton = document.querySelector('.modalbutton')
 
 if (token) {
   
@@ -92,8 +103,31 @@ if (token) {
   loginButton.removeAttribute ('href')
   loginproject.classList.add ('nofiltermg')
   projects.classList.add('nofilter')
+  modalbutton.classList.remove ('nofilter')
 } else {
   
   loginButton.textContent ='Login';
-  loginButton.addEventListener('click', handleLogin);
+  loginButton.addEventListener('click',);
+  ;
 }
+
+
+var openModalBtn = document.getElementById("openModalBtn");
+var modal = document.getElementById("myModal");
+var closeBtn = document.getElementsByClassName("close")[0];
+
+openModalBtn.onclick = function() {
+    modal.style.display = "block";
+};
+
+
+closeBtn.onclick = function() {
+    modal.style.display = "none";
+};
+
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+};

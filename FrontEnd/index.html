@@ -9,6 +9,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<script src="https://kit.fontawesome.com/b744fb55d9.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <header>
@@ -40,10 +41,31 @@
     		<div id="myModal" class="modal">
         	<div class="modal-content">
             <span class="close">&times;</span>
-			<p>gallery photo</p>
+			<p class="modaltxt">Galerie photo</p>
             <div class="gallerymod"></div>
+			<button id="workadd" class="buttonadd">Ajouter une photo</button>	
         	</div>
     		</div>
+
+			<!--<button id="openModalBtn" class="modalbutton nofilter">modifier</button>
+    		<div id="myModal" class="modal">
+        	<div class="modal-content">
+            <span class="close">&times;</span>
+			<form action="traitement_formulaire.php" method="POST" enctype="multipart/form-data">
+				<label for="images">Image :</label>
+				<input type="file" id="image" name="images" accept="image/*" required><br><br>
+
+				<label for="titres">Titre :</label>
+				<input type="text" id="titres" name="titres" required><br><br>
+				
+				<label for="categorie">Catégorie :</label>
+				<select id="categorie" name="categorie" required></select>
+
+				</form>
+					
+        	</div>
+    		</div>-->
+
 		<ul class="projects"></ul>
 		<div class="gallery"></div>
 	</section>

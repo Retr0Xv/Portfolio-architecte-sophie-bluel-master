@@ -254,7 +254,7 @@ a {text-decoration: none;
     border: 1px solid #888;
     width: 80%;
     max-width: 500px;
-	top: 50%;
+	top: 25%;
     position: relative;
 	border-radius: 10px;
 }
@@ -272,3 +272,29 @@ a {text-decoration: none;
     text-decoration: none;
     cursor: pointer;
 }
+
+.modaltxt {font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 26px;
+	line-height: 30px;
+	text-align: center;
+	color: #000000;}
+
+.buttonadd {background: #1D6154;
+	border-radius: 60px;
+	font-family: 'Syne';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 17px;
+	width: 237px;
+	height: 36px;
+	text-align: center;
+	color: #FFFFFF;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	text-decoration: none;
+	te
+	}

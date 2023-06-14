@@ -25,6 +25,7 @@ async function fetchCategories() {
 
     } catch (error) {
         console.log(error);
+    
     }
 }
 
@@ -75,15 +76,57 @@ function displayWorks(data) {
 function displayWorksmod(data) {
     gallerymod.innerHTML = data.map((work) => {
         return `<figure>
+                <i id="delete-work" data-id=${work.id}>class="fa-solid fa-trash-can"</i>
                 <img src=${work.imageUrl} alt=${work.title}/>
             </figure>`
     }).join(' ');
+}
+
+async function deleteWorkOnClick() {
+    const iconsDelete = document.querySelectorAll('.delete-work');
+    iconsDelete.forEach((icon) => icon.addEventListener('click', async () => {
+        const response = await fetch(`http://localhost:5678/api/works/${icon.dataset.id}`, {
+            method: "DELETE",
+            headers: {'Authorization': `Bearer ${window.localStorage.getItem('accessToken')}`}
+        })
+        if (response.status === 200 || 204) {
+            // Delete image (<figure>) dans homepage et modal
+        } else if (response.status === 401) {
+            console.log('Unauthorized');
+        } else {
+            console.log("erreur");
+        }
+    }))
+}
+
+async function addWorkOnClick() {
+/*    const image = document.querySelector()
+    const title = document.querySelector()
+    const category = document.querySelector()
+
+    const formData = new FormData();
+    formData.append("image", image)
+    formData.append("title", title)
+    formData.append("category", category)
+
+    const response = await fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {'Authorization': `Bearer ${window.localStorage.getItem('accessToken')}`}
+        body: formData
+    })
+
+    if (response.status === 201 ) {
+        // Ajouter le work dans homepage et modal
+    } else if (response.status === 401) {
+
+    }*/
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
     await fetchCategories();
     await fetchWorks();
     await filterWorks();
+    await deleteWorkOnClick();
 })
 
 function handleLogout() {
@@ -112,9 +155,9 @@ if (token) {
 }
 
 
-var openModalBtn = document.getElementById("openModalBtn");
-var modal = document.getElementById("myModal");
-var closeBtn = document.getElementsByClassName("close")[0];
+const openModalBtn = document.getElementById("openModalBtn");
+const modal = document.getElementById("myModal");
+const closeBtn = document.getElementsByClassName("close")[0];
 
 openModalBtn.onclick = function() {
     modal.style.display = "block";
@@ -131,3 +174,15 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 };
+
+fetch('http://localhost:5678/api/categories')
+.then(response => response.json())
+.then(data => {
+  data.forEach(categorie => {
+    const option = document.createElement('option');
+    option.value = data.id;
+    option.text = data.id;
+    document.getElementById('categorie').appendChild(option);
+  });
+})
+.catch(error => console.error(error));

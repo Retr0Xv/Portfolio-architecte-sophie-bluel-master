@@ -10,8 +10,13 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="https://kit.fontawesome.com/b744fb55d9.js" crossorigin="anonymous"></script>
-</head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
 <body>
+	<div id="edition" class="edition-mode noedition">
+		<a href="#" class="editionbutton"><i class="fa-sharp fa-light fa-pen-to-square"></i>Mode édition</a>
+		<a href="#" class="publicationbutton">publier les changements</a>
+	
+	</div>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
@@ -35,36 +40,41 @@
 			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
 	</section>
+	<a href="#" class="modalbuttonfake"><i class="fa-sharp fa-light fa-pen-to-square"></i>modifier</a>
 	<section id="portfolio">
-		<h2 class="loginproject">Mes Projets</h2>
-			<button id="openModalBtn" class="modalbutton nofilter">modifier</button>
-    		<div id="myModal" class="modal">
+		<div class="modif loginproject">
+			<h2 class="reference-element">Mes Projets</h2>
+			<button id="openModalBtn" class="modalbutton nofilter"><i class="fa-sharp fa-light fa-pen-to-square"></i>modifier</button>
+			
+		</div>
+    	<div id="myModal" class="modal">
         	<div class="modal-content">
-            <span class="close">&times;</span>
-			<p class="modaltxt">Galerie photo</p>
-            <div class="gallerymod"></div>
-			<button id="workadd" class="buttonadd">Ajouter une photo</button>	
+            	<span class="close">&times;</span>
+				<p class="modaltxt">Galerie photo</p>
+            	<div class="gallerymod"></div>
+				<button id="workadd" class="buttonadd">Ajouter une photo</button>	
         	</div>
-    		</div>
+    	</div>
 
-			<!--<button id="openModalBtn" class="modalbutton nofilter">modifier</button>
-    		<div id="myModal" class="modal">
+    		<div id="myModal2" class="modal">
         	<div class="modal-content">
             <span class="close">&times;</span>
-			<form action="traitement_formulaire.php" method="POST" enctype="multipart/form-data">
-				<label for="images">Image :</label>
-				<input type="file" id="image" name="images" accept="image/*" required><br><br>
+			<form class="add-work" enctype="multipart/form-data">
+				<label for="image">Image :</label>
+				<input type="file" id="image" name="images" accept="image/*" onchange="previewImage(event)" required><br><br>
+				<img id="imagePreview" src="#" alt="Aperçu de l'image" style="display: none;">
 
 				<label for="titres">Titre :</label>
 				<input type="text" id="titres" name="titres" required><br><br>
 				
 				<label for="categorie">Catégorie :</label>
 				<select id="categorie" name="categorie" required></select>
+				<input type="submit" value="Ajouter"/>
 
 				</form>
 					
         	</div>
-    		</div>-->
+    		</div>
 
 		<ul class="projects"></ul>
 		<div class="gallery"></div>

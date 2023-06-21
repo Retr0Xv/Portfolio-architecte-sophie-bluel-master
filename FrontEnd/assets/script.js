@@ -23,6 +23,17 @@ async function fetchCategories() {
             return `<li data-id=${category.id}>${category.name}</li>`
         }).join(' ');
 
+/*        categories.map(categorie => {
+            const option = document.createElement('option');
+            option.value = categorie.id;
+            option.text = categorie.name;
+            document.getElementById('categorie').appendChild(option);
+        });*/
+
+        document.querySelector("#categorie").innerHTML += categories.map(categorie => {
+            return `<option value=${categorie.id}>${categorie.name}</option>`
+        })
+
     } catch (error) {
         console.log(error);
     
@@ -76,14 +87,14 @@ function displayWorks(data) {
 function displayWorksmod(data) {
     gallerymod.innerHTML = data.map((work) => {
         return `<figure>
-                <i id="delete-work" data-id=${work.id}>class="fa-solid fa-trash-can"</i>
+                <i id="delete-work" class="fa-solid fa-trash-can delete-icon" data-id=${work.id}></i>
                 <img src=${work.imageUrl} alt=${work.title}/>
             </figure>`
     }).join(' ');
 }
 
 async function deleteWorkOnClick() {
-    const iconsDelete = document.querySelectorAll('.delete-work');
+    const iconsDelete = document.querySelectorAll('delete-work');
     iconsDelete.forEach((icon) => icon.addEventListener('click', async () => {
         const response = await fetch(`http://localhost:5678/api/works/${icon.dataset.id}`, {
             method: "DELETE",
@@ -91,6 +102,7 @@ async function deleteWorkOnClick() {
         })
         if (response.status === 200 || 204) {
             // Delete image (<figure>) dans homepage et modal
+
         } else if (response.status === 401) {
             console.log('Unauthorized');
         } else {
@@ -99,10 +111,11 @@ async function deleteWorkOnClick() {
     }))
 }
 
-async function addWorkOnClick() {
-/*    const image = document.querySelector()
-    const title = document.querySelector()
-    const category = document.querySelector()
+async function addWorkOnClick(e) {
+    e.preventDefault();
+    const image = document.querySelector("#image").files[0];
+    const title = document.querySelector("#titres").value
+    const category = document.querySelector("#categorie").value
 
     const formData = new FormData();
     formData.append("image", image)
@@ -111,16 +124,19 @@ async function addWorkOnClick() {
 
     const response = await fetch("http://localhost:5678/api/works", {
         method: "POST",
-        headers: {'Authorization': `Bearer ${window.localStorage.getItem('accessToken')}`}
+        headers: {'Authorization': `Bearer ${window.localStorage.getItem('accessToken')}`},
         body: formData
     })
 
     if (response.status === 201 ) {
         // Ajouter le work dans homepage et modal
+
     } else if (response.status === 401) {
 
-    }*/
+    }
 }
+
+document.querySelector('.add-work').addEventListener('submit', (e) => addWorkOnClick(e))
 
 window.addEventListener('DOMContentLoaded', async () => {
     await fetchCategories();
@@ -138,6 +154,7 @@ const token = localStorage.getItem('accessToken');
 const loginButton = document.querySelector('.loginButton');
 const loginproject = document.querySelector('.loginproject')
 const modalbutton = document.querySelector('.modalbutton')
+const editionmode = document.getElementById('edition')
 
 if (token) {
   
@@ -147,6 +164,7 @@ if (token) {
   loginproject.classList.add ('nofiltermg')
   projects.classList.add('nofilter')
   modalbutton.classList.remove ('nofilter')
+  editionmode.classList.remove ('noedition')
 } else {
   
   loginButton.textContent ='Login';
@@ -175,14 +193,26 @@ window.onclick = function(event) {
     }
 };
 
-fetch('http://localhost:5678/api/categories')
-.then(response => response.json())
-.then(data => {
-  data.forEach(categorie => {
-    const option = document.createElement('option');
-    option.value = data.id;
-    option.text = data.id;
-    document.getElementById('categorie').appendChild(option);
-  });
+
+document.querySelector('.buttonadd').addEventListener('click', () => {
+    const modal2 = document.getElementById("myModal2");
+    modal.style.display = "none";
+    modal2.style.display = "block";
+
 })
-.catch(error => console.error(error));
+
+function previewImage(event) {
+    var input = event.target;
+    var preview = document.getElementById('imagePreview');
+  
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+  
+      reader.onload = function (e) {
+        preview.setAttribute('src', e.target.result);
+        preview.style.display = 'block';
+      }
+  
+      reader.readAsDataURL(input.files[0]);
+    }
+  }

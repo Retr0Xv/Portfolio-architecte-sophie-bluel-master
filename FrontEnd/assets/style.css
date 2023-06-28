@@ -170,6 +170,8 @@ main li {border: 1px solid #1D6154;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
+	padding-bottom: 47px;
+    border-bottom: 1px SOLID #B3B3B3;
 }
 
 
@@ -253,21 +255,39 @@ a {text-decoration: none;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    max-width: 500px;
+    max-width: 610px;
 	top: 25%;
     position: relative;
 	border-radius: 10px;
+	display: flex;
+    flex-direction: column;
 }
 
 .close {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.close2 {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.close2:hover,
+.close2:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
@@ -279,7 +299,9 @@ a {text-decoration: none;
 	font-size: 26px;
 	line-height: 30px;
 	text-align: center;
-	color: #000000;}
+	color: #000000;
+	margin-bottom: 36px;
+}
 
 .buttonadd {background: #1D6154;
 	border-radius: 60px;
@@ -292,16 +314,21 @@ a {text-decoration: none;
 	height: 36px;
 	text-align: center;
 	color: #FFFFFF;
-	display: flex;
-    justify-content: center;
-    align-items: center;
-	text-decoration: none;
+	display: block;
+    left: 186px;
+    position: relative;
+	margin-top: 38px;
 	}
 
 .delete-icon {position: relative;
-		top: 20px;
-		COLOR: WHITE;
-		BORDER: 2PX; }
+    top: 28px;
+    COLOR: WHITE;
+    BORDER: 2PX;
+    padding: 4px;
+    background: black;
+    border-radius: 2px;
+    left: 50PX;
+}
 
 .modif {display: flex;
 		justify-content: center;
@@ -362,4 +389,50 @@ a {text-decoration: none;
     width: 216px;
 	margin-left:  21px; ;}
 
-	.noedition {display: none;}
+.noedition {display: none;}
+
+.modal2input {background: #FFFFFF;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	height: 51px;
+	margin-top: 10px;
+	border: none;}
+	
+.modal2txt {display: flex;
+	flex-direction: column;}
+
+.modalform {padding: 0px 85px;}
+
+.modalimageinput { border-radius: 50px;
+	background: #CBD6DC;
+	color: #306685;
+	text-align: center;
+	font-size: 14px;
+	font-family: Work Sans;
+	font-weight: 500;
+	display: flex;
+	width: 173px;
+    height: 36px;
+    justify-content: center;
+    align-items: center;
+	position: relative;
+    left: 78.5px;
+}
+
+.imagePreview {max-height: 169px;
+	position: relative;
+    TOP: -36px;
+    padding: 0px 24.5%;
+    border-radius: 3px;
+    background: #E8F1F6;}
+
+.fakebutton {display: flex;
+    justify-content: center;
+    margin: 36px 0px 0px 0px;
+    color: #D65353;
+    text-align: center;
+    font-size: 14px;
+    font-family: Syne;}
+
+.ligne {margin: 0px 85px;
+    padding-bottom: 47px;
+    border-bottom: 1px SOLID #B3B3B3;}

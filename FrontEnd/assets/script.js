@@ -10,25 +10,25 @@ async function fetchCategories() {
         const response = await fetch('http://localhost:5678/api/categories');
         categories = await response.json();
 
-/*        categories.map((category) => {
-            const li = document.createElement('li');
-            li.textContent = category.name;
-            li.className = 'liButton';
-            li.dataset.id = ''
-            projects.appendChild(li);
-        })*/
+        /*        categories.map((category) => {
+                    const li = document.createElement('li');
+                    li.textContent = category.name;
+                    li.className = 'liButton';
+                    li.dataset.id = ''
+                    projects.appendChild(li);
+                })*/
 
         projects.innerHTML = '<li class="all">Tous</li>';
         projects.innerHTML += categories.map((category) => {
             return `<li data-id=${category.id}>${category.name}</li>`
         }).join(' ');
 
-/*        categories.map(categorie => {
-            const option = document.createElement('option');
-            option.value = categorie.id;
-            option.text = categorie.name;
-            document.getElementById('categorie').appendChild(option);
-        });*/
+        /*        categories.map(categorie => {
+                    const option = document.createElement('option');
+                    option.value = categorie.id;
+                    option.text = categorie.name;
+                    document.getElementById('categorie').appendChild(option);
+                });*/
 
         document.querySelector("#categorie").innerHTML += categories.map(categorie => {
             return `<option value=${categorie.id}>${categorie.name}</option>`
@@ -36,7 +36,7 @@ async function fetchCategories() {
 
     } catch (error) {
         console.log(error);
-    
+
     }
 }
 
@@ -61,11 +61,11 @@ async function filterWorks() {
         buttonsFilter.forEach((buttonFilter) => buttonFilter.classList.remove('active'));
         button.classList.add('active');
 
-/*        if (button.classList.contains('all')) {
-            worksFiltered = works;
-        } else {
-            worksFiltered = works.filter(work => work.categoryId == button.dataset.id);
-        }*/
+        /*        if (button.classList.contains('all')) {
+                    worksFiltered = works;
+                } else {
+                    worksFiltered = works.filter(work => work.categoryId == button.dataset.id);
+                }*/
 
         worksFiltered = button.classList.contains('all')
             ? works
@@ -91,24 +91,22 @@ function displayWorksmod(data) {
                 <img src=${work.imageUrl} alt=${work.title}/>
             </figure>`
     }).join(' ');
+    const iconsDelete = document.querySelectorAll('#delete-work');
+    iconsDelete.forEach((icon) => icon.addEventListener('click', async () => deleteWorkOnClick(icon)));
 }
 
-async function deleteWorkOnClick() {
-    const iconsDelete = document.querySelectorAll('delete-work');
-    iconsDelete.forEach((icon) => icon.addEventListener('click', async () => {
-        const response = await fetch(`http://localhost:5678/api/works/${icon.dataset.id}`, {
-            method: "DELETE",
-            headers: {'Authorization': `Bearer ${window.localStorage.getItem('accessToken')}`}
-        })
-        if (response.status === 200 || 204) {
-            // Delete image (<figure>) dans homepage et modal
-
-        } else if (response.status === 401) {
-            console.log('Unauthorized');
-        } else {
-            console.log("erreur");
-        }
-    }))
+async function deleteWorkOnClick(icon) {
+    const response = await fetch(`http://localhost:5678/api/works/${icon.dataset.id}`, {
+        method: "DELETE",
+        headers: {'Authorization': `Bearer ${window.localStorage.getItem('accessToken')}`}
+    })
+    if (response.status === 200 || 204) {
+        fetchWorks()
+    } else if (response.status === 401) {
+        console.log('Unauthorized');
+    } else {
+        console.log("erreur");
+    }
 }
 
 async function addWorkOnClick(e) {
@@ -128,9 +126,8 @@ async function addWorkOnClick(e) {
         body: formData
     })
 
-    if (response.status === 201 ) {
-        // Ajouter le work dans homepage et modal
-
+    if (response.status === 201) {
+        fetchWorks()
     } else if (response.status === 401) {
 
     }
@@ -146,9 +143,10 @@ window.addEventListener('DOMContentLoaded', async () => {
 })
 
 function handleLogout() {
-    
+
     localStorage.removeItem('accessToken');
-    window.location.reload();}
+    window.location.reload();
+}
 
 const token = localStorage.getItem('accessToken');
 const loginButton = document.querySelector('.loginButton');
@@ -157,19 +155,19 @@ const modalbutton = document.querySelector('.modalbutton')
 const editionmode = document.getElementById('edition')
 
 if (token) {
-  
-  loginButton.textContent ='Logout';
-  loginButton.addEventListener('click', handleLogout);
-  loginButton.removeAttribute ('href')
-  loginproject.classList.add ('nofiltermg')
-  projects.classList.add('nofilter')
-  modalbutton.classList.remove ('nofilter')
-  editionmode.classList.remove ('noedition')
+
+    loginButton.textContent = 'Logout';
+    loginButton.addEventListener('click', handleLogout);
+    loginButton.removeAttribute('href')
+    loginproject.classList.add('nofiltermg')
+    projects.classList.add('nofilter')
+    modalbutton.classList.remove('nofilter')
+    editionmode.classList.remove('noedition')
 } else {
-  
-  loginButton.textContent ='Login';
-  loginButton.addEventListener('click',);
-  ;
+
+    loginButton.textContent = 'Login';
+    loginButton.addEventListener('click',);
+    ;
 }
 
 
@@ -177,19 +175,36 @@ const openModalBtn = document.getElementById("openModalBtn");
 const modal = document.getElementById("myModal");
 const closeBtn = document.getElementsByClassName("close")[0];
 
-openModalBtn.onclick = function() {
+
+openModalBtn.onclick = function () {
     modal.style.display = "block";
 };
 
 
-closeBtn.onclick = function() {
+closeBtn.onclick = function () {
     modal.style.display = "none";
 };
 
 
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
+    }
+};
+
+
+const modal2 = document.getElementById("myModal2");
+const closeBtn2 = document.getElementsByClassName("close2")[0];
+
+
+closeBtn2.onclick = function () {
+    modal2.style.display = "none";
+};
+
+
+window.onclick = function (event) {
+    if (event.target == modal2) {
+        modal2.style.display = "none";
     }
 };
 
@@ -201,18 +216,29 @@ document.querySelector('.buttonadd').addEventListener('click', () => {
 
 })
 
+document.getElementsByClassName("return")[0].addEventListener('click', () => {
+    const modal2 = document.getElementById("myModal2");
+    modal.style.display = "block";
+    modal2.style.display = "none";
+
+
+})
+
+
+document.querySelector('#image').addEventListener('change', (e) => previewImage(e))
+
 function previewImage(event) {
-    var input = event.target;
-    var preview = document.getElementById('imagePreview');
-  
+    const input = event.target;
+    const preview = document.getElementById('imagePreview');
+
     if (input.files && input.files[0]) {
-      var reader = new FileReader();
-  
-      reader.onload = function (e) {
-        preview.setAttribute('src', e.target.result);
-        preview.style.display = 'block';
-      }
-  
-      reader.readAsDataURL(input.files[0]);
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            preview.setAttribute('src', e.target.result);
+            preview.style.display = 'block';
+        }
+
+        reader.readAsDataURL(input.files[0]);
     }
-  }
+}

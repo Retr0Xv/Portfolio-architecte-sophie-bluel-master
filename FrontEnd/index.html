@@ -60,17 +60,19 @@
     		<div id="myModal2" class="modal">
         	<div class="modal-content">
             <div class="modalclose">
-			<span class="return fa-sharp fa-regular fa-arrow-right fa-2xs" style="color: #000000;"></span>
+			<i class="return fa-solid fa-arrow-left" style="color: #000000;"></i>
 			<span class="close2">&times;</span>
 			</div>
 			<form class="add-work" enctype="multipart/form-data">
 				<div class="ligne">
-				<input type="file"  id="image" name="images" style="display: none;" accept="image/*" onchange="previewImage(event)" required><br><br>
-				<label for="image" class="modalimageinput">
-					<!--<img src="path/to/placeholder-image.jpg" alt="Image Placeholder">-->
-					<span class="">+ Ajouter photo</span>
-				  </label>
-				<img id="imagePreview" src="#" class="imagePreview" alt="Aperçu de l'image" style="display: none;">
+					<div class="imgform">
+						<input type="file"  id="image" name="images" style="display: none;" accept="image/*" onchange="previewImage(event)" required><br><br>
+						<label for="image" class="modalimageinput">
+						<!--<img src="path/to/placeholder-image.jpg" alt="Image Placeholder">-->
+						<span class="">+ Ajouter photo</span>
+				 	 	</label>
+						<img id="imagePreview" src="#" class="imagePreview" alt="Aperçu de l'image" style="display: none;">
+					</div>
 				<div class="modal2txt">
 				<label for="titres">Titre</label>
 				<input type="text" class="modal2input" id="titres" name="titres" required><br><br>

@@ -242,3 +242,18 @@ function previewImage(event) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+// Obtenez une référence vers l'image prévisualisée
+const imagePreview = document.getElementById('imagePreview');
+
+// Ajoutez un gestionnaire d'événement pour l'événement de chargement
+imagePreview.addEventListener('load', function() {
+  // Obtenez une référence vers les éléments avec la classe "modalimageinput"
+  const modalImageInputs = document.getElementsByClassName('modalimageinput');
+
+  // Parcourez les éléments avec la classe "modalimageinput" et masquez-les
+  for (let i = 0; i < modalImageInputs.length; i++) {
+    modalImageInputs[i].style.display = 'none';
+  }
+});
+

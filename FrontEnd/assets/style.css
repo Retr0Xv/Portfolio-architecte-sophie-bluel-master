@@ -315,8 +315,6 @@ a {text-decoration: none;
 	text-align: center;
 	color: #FFFFFF;
 	display: block;
-    left: 186px;
-    position: relative;
 	margin-top: 38px;
 	}
 
@@ -415,15 +413,15 @@ a {text-decoration: none;
     justify-content: center;
     align-items: center;
 	position: relative;
-    left: 78.5px;
+    
 }
 
-.imagePreview {max-height: 169px;
+.imagePreview {max-height: 100%;
 	position: relative;
-    TOP: -36px;
-    padding: 0px 24.5%;
-    border-radius: 3px;
-    background: #E8F1F6;}
+	border-radius: 3px;
+	background: #E8F1F6;
+	max-width: 100%;
+	}
 
 .fakebutton {display: flex;
     justify-content: center;
@@ -436,3 +434,12 @@ a {text-decoration: none;
 .ligne {margin: 0px 85px;
     padding-bottom: 47px;
     border-bottom: 1px SOLID #B3B3B3;}
+
+.imgform {background: #E8F1F6;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+height: 169px;
+max-width: 100%;
+margin-bottom: 2rem;}

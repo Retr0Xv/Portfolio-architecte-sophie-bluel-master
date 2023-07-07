@@ -153,6 +153,7 @@ const loginButton = document.querySelector('.loginButton');
 const loginproject = document.querySelector('.loginproject')
 const modalbutton = document.querySelector('.modalbutton')
 const editionmode = document.getElementById('edition')
+const modalbtnfake = document.getElementById('mbf')
 
 if (token) {
 
@@ -163,6 +164,7 @@ if (token) {
     projects.classList.add('nofilter')
     modalbutton.classList.remove('nofilter')
     editionmode.classList.remove('noedition')
+    modalbtnfake.classList.remove('nofilter')
 } else {
 
     loginButton.textContent = 'Login';
@@ -243,16 +245,13 @@ function previewImage(event) {
     }
 }
 
-// Obtenez une référence vers l'image prévisualisée
+
 const imagePreview = document.getElementById('imagePreview');
 
-// Ajoutez un gestionnaire d'événement pour l'événement de chargement
-imagePreview.addEventListener('load', function() {
-  // Obtenez une référence vers les éléments avec la classe "modalimageinput"
-  const modalImageInputs = document.getElementsByClassName('modalimageinput');
 
-  // Parcourez les éléments avec la classe "modalimageinput" et masquez-les
-  for (let i = 0; i < modalImageInputs.length; i++) {
+imagePreview.addEventListener('load', function() {
+    const modalImageInputs = document.getElementsByClassName('modalimageinput');
+    for (let i = 0; i < modalImageInputs.length; i++) {
     modalImageInputs[i].style.display = 'none';
   }
 });

@@ -153,6 +153,7 @@ const loginButton = document.querySelector('.loginButton');
 const loginproject = document.querySelector('.loginproject')
 const modalbutton = document.querySelector('.modalbutton')
 const editionmode = document.getElementById('edition')
+const fakebutton = document.getElementById('fakebutton')
 
 if (token) {
 
@@ -163,6 +164,7 @@ if (token) {
     projects.classList.add('nofilter')
     modalbutton.classList.remove('nofilter')
     editionmode.classList.remove('noedition')
+    fakebutton.classList.remove('fakebutton1')
 } else {
 
     loginButton.textContent = 'Login';

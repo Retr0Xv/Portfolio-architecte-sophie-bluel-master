@@ -149,6 +149,8 @@ main li {border: 1px solid #1D6154;
 		color: #FFFFFF;
 }
 
+.fakebutton1 {display: none;}
+
 .gallery {
 	width: 100%;
 	display: grid;

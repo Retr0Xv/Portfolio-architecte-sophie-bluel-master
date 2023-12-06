@@ -153,7 +153,6 @@ const loginButton = document.querySelector('.loginButton');
 const loginproject = document.querySelector('.loginproject')
 const modalbutton = document.querySelector('.modalbutton')
 const editionmode = document.getElementById('edition')
-const modalbtnfake = document.getElementById('mbf')
 
 if (token) {
 
@@ -164,7 +163,6 @@ if (token) {
     projects.classList.add('nofilter')
     modalbutton.classList.remove('nofilter')
     editionmode.classList.remove('noedition')
-    modalbtnfake.classList.remove('nofilter')
 } else {
 
     loginButton.textContent = 'Login';
@@ -232,6 +230,7 @@ document.querySelector('#image').addEventListener('change', (e) => previewImage(
 function previewImage(event) {
     const input = event.target;
     const preview = document.getElementById('imagePreview');
+    const label = document.querySelector('.modalimageinput');
 
     if (input.files && input.files[0]) {
         const reader = new FileReader();
@@ -239,20 +238,9 @@ function previewImage(event) {
         reader.onload = function (e) {
             preview.setAttribute('src', e.target.result);
             preview.style.display = 'block';
+            label.style.display = 'none';
         }
 
         reader.readAsDataURL(input.files[0]);
     }
 }
-
-
-const imagePreview = document.getElementById('imagePreview');
-
-
-imagePreview.addEventListener('load', function() {
-    const modalImageInputs = document.getElementsByClassName('modalimageinput');
-    for (let i = 0; i < modalImageInputs.length; i++) {
-    modalImageInputs[i].style.display = 'none';
-  }
-});
-

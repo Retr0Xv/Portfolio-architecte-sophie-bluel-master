@@ -265,6 +265,9 @@ a {text-decoration: none;
     flex-direction: column;
 }
 
+button.buttonadd {margin: 2em auto;
+}   
+
 .close {
     color: black;
     float: right;
@@ -317,7 +320,6 @@ a {text-decoration: none;
 	text-align: center;
 	color: #FFFFFF;
 	display: block;
-    left: 186px;
     position: relative;
 	margin-top: 38px;
 	}
@@ -393,6 +395,28 @@ a {text-decoration: none;
 
 .noedition {display: none;}
 
+.test {display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #E8F1F6;
+	height: 169px;
+	justify-content: center;
+}
+
+.test p {line-height: normal;
+	margin-top: 7px;
+}
+
+.test #image {margin-top: -25px;
+    margin-left: 90px;
+    position: static;
+	opacity: 0;
+}
+
+#photo-add-icon {line-height: normal;
+	margin-bottom: 6px;
+}
+
 .modal2input {background: #FFFFFF;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	height: 51px;
@@ -417,12 +441,10 @@ a {text-decoration: none;
     justify-content: center;
     align-items: center;
 	position: relative;
-    left: 78.5px;
 }
 
 .imagePreview {max-height: 169px;
 	position: relative;
-    TOP: -36px;
     padding: 0px 24.5%;
     border-radius: 3px;
     background: #E8F1F6;}

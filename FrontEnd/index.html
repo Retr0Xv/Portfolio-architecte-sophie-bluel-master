@@ -76,17 +76,17 @@
                     <span class="fa-solid fa-arrow-left" style="color: #000000;"></span>
                     <span class="close2">&times;</span>
                 </div>
-                <form class="add-work" enctype="multipart/form-data">
+                <form class="add-work" enctype="multipart/form-data" method="post" action="#">
                     <div class="ligne">
                         <div class="test">
-                            <input type="file" id="image" name="images" style="display: none;" accept="image/*"
-                                   onchange="previewImage(event)" required><br><br>
-                            <label for="image" class="modalimageinput">
-                                <!--<img src="path/to/placeholder-image.jpg" alt="Image Placeholder">-->
-                                <span class="">+ Ajouter photo</span>
-                            </label>
-                            <img id="imagePreview" src="#" class="imagePreview" alt="Aperçu de l'image"
+                            <i id= "photo-add-icon" class="fa-regular fa-4x fa-image" style="color:#B9C5CC;
+                            ;"></i>
+                            <label for="image" class="modalimageinput" required>+ Ajouter photo</label>
+                            <input type="file" id="image" name="images" accept="image/*, .jpg, .jpeg, .png" required
+                                   onchange="previewImage(event)">
+                           <img id="imagePreview" src="#" class="imagePreview" alt="Aperçu de l'image"
                                  style="display: none;">
+                                 <p id="photo-size">jpg, png : 4mo max</p>
                         </div>
                         <div class="modal2txt">
                             <label for="titres">Titre</label>

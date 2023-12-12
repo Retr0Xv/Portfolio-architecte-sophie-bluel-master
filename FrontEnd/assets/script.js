@@ -126,11 +126,25 @@ async function addWorkOnClick(e) {
         body: formData
     })
 
-    if (response.status === 201) {
-        fetchWorks()
-    } else if (response.status === 401) {
-
-    }
+    .then(function(response) {
+        switch(response.status) {
+            case 500:
+            case 503:
+                alert("Erreur inattendue!");
+            break;
+            case 400:
+            case 404:
+                alert("Impossible d'ajouter le nouveau projet!");
+            break;
+            case 200:
+            case 201:
+                console.log("Projet ajouté avec succés!");
+                return response.json();
+            break;
+            default:
+                alert("Erreur inconnue!");
+            break;
+        }})
 }
 
 document.querySelector('.add-work').addEventListener('submit', (e) => addWorkOnClick(e))
@@ -233,6 +247,9 @@ function previewImage(event) {
     const input = event.target;
     const preview = document.getElementById('imagePreview');
     const label = document.querySelector('.modalimageinput');
+    const input2 = document.getElementById('image')
+    const p = document.getElementById('photo-size')
+    const icon = document.getElementById('photo-add-icon')
 
     if (input.files && input.files[0]) {
         const reader = new FileReader();
@@ -241,6 +258,9 @@ function previewImage(event) {
             preview.setAttribute('src', e.target.result);
             preview.style.display = 'block';
             label.style.display = 'none';
+            input2.style.display = 'none';
+            p.style.display = 'none';
+            icon.style.display = 'none';
         }
 
         reader.readAsDataURL(input.files[0]);

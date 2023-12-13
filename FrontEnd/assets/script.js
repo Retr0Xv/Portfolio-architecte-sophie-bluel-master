@@ -139,6 +139,10 @@ async function addWorkOnClick(e) {
             case 200:
             case 201:
                 console.log("Projet ajouté avec succés!");
+                fetchWorks()
+                displayWorks(works)
+                displayWorksmod(works);
+                resetForm();
                 return response.json();
             break;
             default:
@@ -236,8 +240,6 @@ document.getElementsByClassName("return")[0].addEventListener('click', () => {
     const modal2 = document.getElementById("myModal2");
     modal.style.display = "block";
     modal2.style.display = "none";
-
-
 })
 
 
@@ -265,4 +267,23 @@ function previewImage(event) {
 
         reader.readAsDataURL(input.files[0]);
     }
+}
+
+function resetForm() {
+    const preview = document.getElementById('imagePreview');
+    const label = document.querySelector('.modalimageinput');
+    const input2 = document.getElementById('image')
+    const p = document.getElementById('photo-size')
+    const icon = document.getElementById('photo-add-icon')
+    const titleInput = document.querySelector('.modal2input');
+    const categoryInput = document.querySelector('.modal2txt select');
+
+    categoryInput.value = 1
+    titleInput.value = '';
+    preview.setAttribute('src', null);
+    preview.style.display = 'none';
+    label.style.display = 'flex';
+    input2.style.display = 'inline-block';
+    p.style.display = 'block';
+    icon.style.display = 'inline-block';
 }

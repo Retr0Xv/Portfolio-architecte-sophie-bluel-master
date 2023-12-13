@@ -236,6 +236,15 @@ document.querySelector('.buttonadd').addEventListener('click', () => {
 
 })
 
+document.querySelector('.return').addEventListener('click', () => {
+    const modal2 = document.getElementById("myModal2");
+    modal.style.display = "block";
+    modal2.style.display = "none";
+
+})
+
+
+
 document.getElementsByClassName("return")[0].addEventListener('click', () => {
     const modal2 = document.getElementById("myModal2");
     modal.style.display = "block";

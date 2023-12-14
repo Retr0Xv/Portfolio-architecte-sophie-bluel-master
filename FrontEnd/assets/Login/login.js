@@ -10,7 +10,25 @@ form.addEventListener('submit',(e)=>{
 			},
         body: JSON.stringify({ email,password })
     })
-    .then((response) => response.json())
+    .then(function(response) {
+        switch(response.status) {
+            case 500:
+            case 503:
+                alert("Erreur côté serveur!");
+            break;
+            case 401:
+            case 404:
+                alert("Email ou mot de passe incorrect!");
+            break;
+            case 200:
+                console.log("Authentification réussie.");
+                return response.json();
+            break;
+            default:
+                alert("Erreur inconnue!");
+            break;
+        }
+    })
     .then((user) => {
         window.localStorage.setItem("accessToken", user.token);
         document.location.href='index.html'
